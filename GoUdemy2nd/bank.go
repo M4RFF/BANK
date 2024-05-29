@@ -1,40 +1,16 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"os"
-	"strconv" // string convergent
+
+	"example.com/bank/fileops" // i need to find how to solve this error with importing package "fileops" into bank.go
 )
 
 const accoundBalanceFile = "balance.txt"
 
-func getFloatFromFile(fileName string) (float64, error) {
-	data, err := os.ReadFile(fileName)
-
-	if err != nil {
-		return 1000, errors.New("failed to find file")
-	}
-
-	valueText := string(data)
-	value, err := strconv.ParseFloat(valueText, 64)
-
-	if err != nil {
-		return 1000, errors.New("failed to parse stored value")
-	}
-
-	return value, nil
-}
-
-// creates a txt file where we collect an information about the balance
-func writeFloatToFile(value float64, fileName string) {
-	valueText := fmt.Sprint(value)
-	os.WriteFile(fileName, []byte(valueText), 0644)
-}
-
 func main() {
 
-	var accountBalance, err = getFloatFromFile(accoundBalanceFile)
+	var accountBalance, err = fileops.GetFloatFromFile(accoundBalanceFile)
 
 	if err != nil {
 		fmt.Println("ERROR")
@@ -85,7 +61,7 @@ func main() {
 
 			accountBalance += depositeAmount // accoundBalance = accoundBalance + depositeAmount
 			fmt.Println("Balance updated! New amount:", accountBalance)
-			writeFloatToFile(accountBalance, accoundBalanceFile)
+			fileops.WriteFloatToFile(accountBalance, accoundBalanceFile)
 
 		case 3:
 
@@ -101,7 +77,7 @@ func main() {
 			if withdrawAmount <= accountBalance {
 				accountBalance -= withdrawAmount
 				fmt.Println("Balance updated! New amount:", accountBalance)
-				writeFloatToFile(accountBalance, accoundBalanceFile)
+				fileops.WriteFloatToFile(accountBalance, accoundBalanceFile)
 
 			} else if withdrawAmount > accountBalance {
 				fmt.Println("You don't have enough money on the balance!")
