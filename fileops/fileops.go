@@ -24,7 +24,7 @@ func GetFloatFromFile(fileName string) (float64, error) {
 	return value, nil
 }
 
-// creates a txt file where we collect an information about the balance
+// creates a txt file where we collect an information about the value
 func WriteFloatToFile(value float64, fileName string) {
 	valueText := fmt.Sprint(value)
 	os.WriteFile(fileName, []byte(valueText), 0644)
