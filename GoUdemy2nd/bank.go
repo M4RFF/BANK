@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"example.com/bank/fileops" // i need to find how to solve this error with importing package "fileops" into bank.go
+	"github.com/Pallinder/go-randomdata"
 )
 
 const accoundBalanceFile = "balance.txt"
@@ -23,6 +24,7 @@ func main() {
 	}
 
 	fmt.Println("Welcome to Max Bank")
+	fmt.Println("Reach us 24/7", randomdata.PhoneNumber())
 
 	for {
 
