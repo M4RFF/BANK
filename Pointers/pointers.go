@@ -7,13 +7,16 @@ import (
 func main() {
 	age := 19 // regular variable
 
-	// var agePointer *int  // the 2nd method how to initialize
-	agePointer := &age
+	var agePointer *int
+	agePointer = &age
 
-	fmt.Println("Age: ", age)
+	// agePointer := &age // the 2nd method how to initialize
 
-	otherYears := getOtherYears(age)
-	fmt.Println(otherYears)
+	// fmt.Println("Age:", agePointer)  // it will output the address 0xc00000a0b8
+	fmt.Println("Age:", *agePointer) // it will output the value
+
+	// otherYears := getOtherYears(age)
+	// fmt.Println(otherYears)
 }
 
 func getOtherYears(age int) int {
