@@ -2,7 +2,15 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
+
+type User struct {
+	firstName string
+	lastName  string
+	birthDate string
+	createdAt time.Time
+}
 
 func main() {
 	firstName := getUserData("Please enter your first name: ")
@@ -15,7 +23,7 @@ func main() {
 }
 
 func outPutUserDetails(firstName, lastName, birthdate string) {
-
+	// ....
 	fmt.Println(firstName, lastName, birthdate)
 }
 
