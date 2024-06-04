@@ -12,6 +12,13 @@ type User struct {
 	createdAt time.Time
 }
 
+// I atteched the func bellow to the struct User above
+func (u User) outPutUserDetails() { // (u User) receiver argument
+	// ....
+
+	fmt.Println(u.firstName, u.lastName, u.birthDate)
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -28,12 +35,7 @@ func main() {
 
 	// ... do something awesome with that gathered data!
 
-	outPutUserDetails(appUser)
-}
-
-func outPutUserDetails(u User) {
-	// ....
-	fmt.Println(u.firstName, u.lastName, u.birthDate)
+	appUser.outPutUserDetails()
 }
 
 func getUserData(promptText string) string {
