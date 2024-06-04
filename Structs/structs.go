@@ -13,10 +13,15 @@ type User struct {
 }
 
 // I atteched the func bellow to the struct User above
-func (u User) outPutUserDetails() { // (u User) receiver argument
+func (u *User) outPutUserDetails() { // (u User) receiver argument
 	// ....
 
 	fmt.Println(u.firstName, u.lastName, u.birthDate)
+}
+
+func (u *User) clearUserName() {
+	u.firstName = ""
+	u.lastName = ""
 }
 
 func main() {
@@ -35,6 +40,8 @@ func main() {
 
 	// ... do something awesome with that gathered data!
 
+	appUser.outPutUserDetails() // called the func that I've atteched to the struct
+	appUser.clearUserName()
 	appUser.outPutUserDetails()
 }
 
