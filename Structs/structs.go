@@ -19,7 +19,7 @@ func (u *User) outPutUserDetails() { // (u User) receiver argument
 	fmt.Println(u.firstName, u.lastName, u.birthDate)
 }
 
-func (u *User) clearUserName() {
+func (u *User) clearUserName() { // I have to add "*" to the User if i wanna edit an original method not a copy
 	u.firstName = ""
 	u.lastName = ""
 }
