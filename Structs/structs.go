@@ -12,6 +12,17 @@ type User struct {
 	createdAt time.Time
 }
 
+// creation or constructor func
+
+func newUser(firstName, lastName, birthdate string) *User {
+	return &User{
+		firstName: firstName,
+		lastName:  lastName,
+		birthDate: birthdate,
+		createdAt: time.Now(),
+	}
+}
+
 // I atteched the func bellow to the struct User above
 func (u *User) outPutUserDetails() { // (u User) receiver argument
 	// ....
@@ -29,14 +40,9 @@ func main() {
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	var appUser User
+	var appUser *User
 
-	appUser = User{ // Instance of a struct type "User"
-		firstName: userFirstName,
-		lastName:  userLastName,
-		birthDate: userBirthdate,
-		createdAt: time.Now(),
-	}
+	appUser = newUser(userFirstName, userLastName, userBirthdate)
 
 	// ... do something awesome with that gathered data!
 
