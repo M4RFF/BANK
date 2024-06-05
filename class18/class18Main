@@ -1,0 +1,15 @@
+package class
+
+import "fmt"
+
+type str string
+
+func (text str) log() {
+	fmt.Println(text)
+}
+
+func class() {
+	var name str = "Maks"
+
+	name.log()
+}
