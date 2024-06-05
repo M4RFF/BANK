@@ -19,6 +19,13 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	admin := user.NewAdmin("test@example.com", "Pecs123")
+
+	admin.OutPutUserDetails()
+	admin.ClearUserName()
+	admin.OutPutUserDetails()
+
 	// ... do something awesome with that gathered data!
 
 	appUser.OutPutUserDetails() // called the func that I've atteched to the struct

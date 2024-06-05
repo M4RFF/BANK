@@ -13,6 +13,12 @@ type User struct {
 	createdAt time.Time
 }
 
+type Admin struct {
+	email    string
+	password string
+	User
+}
+
 // I atteched the func bellow to the struct User above
 func (u *User) OutPutUserDetails() { // (u User) receiver argument
 	// ....
@@ -23,6 +29,19 @@ func (u *User) OutPutUserDetails() { // (u User) receiver argument
 func (u *User) ClearUserName() { // I have to add "*" to the User if i wanna edit an original method not a copy
 	u.firstName = ""
 	u.lastName = ""
+}
+
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		User: User{
+			firstName: "Admin",
+			lastName:  "Admin",
+			birthDate: "___",
+			createdAt: time.Now(),
+		},
+	}
 }
 
 // creation or constructor func
