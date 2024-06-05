@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -14,13 +15,17 @@ type User struct {
 
 // creation or constructor func
 
-func newUser(firstName, lastName, birthdate string) *User {
+func newUser(firstName, lastName, birthdate string) (*User, error) {
+	if firstName == "" || lastName == "" || birthdate == "" {
+		return nil, errors.New("First name, Last name, Birthdata are required")
+	}
+
 	return &User{
 		firstName: firstName,
 		lastName:  lastName,
 		birthDate: birthdate,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 // I atteched the func bellow to the struct User above
@@ -42,8 +47,12 @@ func main() {
 
 	var appUser *User
 
-	appUser = newUser(userFirstName, userLastName, userBirthdate)
+	appUser, err := newUser(userFirstName, userLastName, userBirthdate)
 
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	// ... do something awesome with that gathered data!
 
 	appUser.outPutUserDetails() // called the func that I've atteched to the struct
@@ -54,6 +63,6 @@ func main() {
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
 	var value string
-	fmt.Scan(&value)
+	fmt.Scanln(&value) // Scanln() stops waiting for an input when a user skips inputs
 	return value
 }
