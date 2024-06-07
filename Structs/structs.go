@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"example.com/structs/user"
+	"example.com/structs/users"
 )
 
 func main() {
@@ -11,16 +11,16 @@ func main() {
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	var appUser *user.User
+	var appUser *users.User
 
-	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+	appUser, err := users.NewUser(userFirstName, userLastName, userBirthdate)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	admin := user.NewAdmin("test@example.com", "Pecs123")
+	admin := users.NewAdmin("test@example.com", "Pecs123")
 
 	admin.OutPutUserDetails()
 	admin.ClearUserName()
