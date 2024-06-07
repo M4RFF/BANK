@@ -15,7 +15,7 @@ func (todo Todo) Display() {
 	fmt.Println(todo.Text)
 }
 
-func (todo Todo) Save() error {
+func (todo Todo) Save() error { // here save() doesn't have any inputs but return error
 	fileName := "todo.json"
 
 	json, err := json.Marshal(todo) // converts to text json format

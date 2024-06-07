@@ -4,10 +4,16 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
+
 	"practice/note"
 	"practice/todo"
-	"strings"
 )
+
+// Creating the new Interface
+type Saver interface {
+	Save() error
+}
 
 func main() {
 	title, content := getNoteData()
