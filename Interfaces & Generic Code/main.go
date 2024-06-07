@@ -33,6 +33,10 @@ type Outputtable interface {
 }
 
 func main() {
+	printSomething(1)      // int
+	printSomething(1.5)    // float
+	printSomething("Maks") // string
+
 	title, content := getNoteData()
 
 	todoText := getUserImput("Todo text:")
@@ -64,6 +68,11 @@ func main() {
 // 	text := getUserImput("Todo text:")
 // 	return text
 // }
+
+// Special Kinder of Interface
+func printSomething(value interface{}) { // any values are allowed
+	fmt.Println(value)
+}
 
 func outputData(data Outputtable) error {
 	data.Display()
