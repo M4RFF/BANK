@@ -73,14 +73,37 @@ func main() {
 
 // Special Kinder of Interface
 func printSomething(value interface{}) { // any values are allowed
-	switch value.(type) {
-	case int:
-		fmt.Println("Integer:", value)
-	case float64:
-		fmt.Println("Float:", value)
-	case string:
-		fmt.Println(value)
+
+	// the 2nd method to sort by types
+	intdVal, ok := value.(int)
+
+	if ok {
+		fmt.Println("Integer:", intdVal)
+		return
 	}
+	floatVal, ok := value.(float64)
+
+	if ok {
+		fmt.Println("Float:", floatVal)
+		return
+	}
+
+	stringVal, ok := value.(string)
+
+	if ok {
+		fmt.Println("String:", stringVal)
+		return
+	}
+
+	// the 1st method to sort by types
+	// switch value.(type) {
+	// case int:
+	// 	fmt.Println("Integer:", value)
+	// case float64:
+	// 	fmt.Println("Float:", value)
+	// case string:
+	// 	fmt.Println(value)
+	// }
 }
 
 func outputData(data Outputtable) error {
