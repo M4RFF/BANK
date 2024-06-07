@@ -10,9 +10,26 @@ import (
 	"practice/todo"
 )
 
-// Creating the new Interface
+// Creating the first Interface for Save()
 type Saver interface {
 	Save() error
+}
+
+// Creating the 2nd interface for Display()
+type Displayer interface {
+	Display()
+}
+
+// // create an interface that includes two methods
+// type Outputtable interface {
+// 	Save() error
+// 	Display()
+// }
+
+// Creating an Embedded Interface
+type Outputtable interface {
+	Saver
+	Displayer
 }
 
 func main() {
@@ -34,25 +51,24 @@ func main() {
 		return
 	}
 
-	todo.Display()
-	err = saveData(todo)
+	err = outputData(todo)
 
 	if err != nil {
 		return
 	}
 
-	userNote.Display()
-	err = saveData(userNote)
-
-	if err != nil {
-		return
-	}
+	outputData(userNote)
 }
 
 // func getTodoData() string {
 // 	text := getUserImput("Todo text:")
 // 	return text
 // }
+
+func outputData(data Outputtable) error {
+	data.Display()
+	return saveData(data)
+}
 
 func saveData(data Saver) error {
 	err := data.Save()
