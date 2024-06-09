@@ -14,6 +14,11 @@ func main() {
 	// removing an element from the slice
 	prices = prices[1:]
 	fmt.Println(prices)
+
+	discountPrices := []float64{102.99, 8.99, 13.13}
+	prices = append(prices, discountPrices...)
+	fmt.Println(prices)
+
 }
 
 // func main() {
