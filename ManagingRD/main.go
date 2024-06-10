@@ -28,4 +28,16 @@ func main() {
 	courseRatings.output()
 
 	// fmt.Println(courseRatings)
+
+	// for slices and array
+	for index, value := range userNames {
+		fmt.Println("Index:", index)
+		fmt.Println("Value", value)
+	}
+
+	// for map
+	for key, value := range courseRatings {
+		fmt.Println("Key:", key)
+		fmt.Println("Value", value)
+	}
 }
