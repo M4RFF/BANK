@@ -1,54 +1,24 @@
 package main
 
-import (
-	"fmt"
-)
-
-type TransformFn func(int) int
-
-// type AnotherFn func(int, []string, map[string][]int) ([]int, string)
+import "fmt"
 
 func main() {
-	numbers := []int{1, 2, 3, 4}
-	moreNumbers := []int{5, 2, 1}
-	doubled := transformNumbers(&numbers, double) // use &numbers to get the address of numbers
-	tripled := transformNumbers(&numbers, triple)
+	numbers := []int{1, 2, 3}
 
-	fmt.Println(doubled)
-	fmt.Println(tripled)
+	// here is func(number int) int {return number * 2}) is anonymous function
+	transformed := transformNumbers(&numbers, func(number int) int {
+		return number * 2
+	})
 
-	transformFn1 := getTransformerFunction(&numbers)
-	transformFn2 := getTransformerFunction(&moreNumbers)
-
-	transformedNumbers := transformNumbers(&numbers, transformFn1)
-	moreTransformedNumbers := transformNumbers(&moreNumbers, transformFn2)
-
-	fmt.Println(transformedNumbers)
-	fmt.Println(moreTransformedNumbers)
+	fmt.Println(transformed)
 }
 
-func transformNumbers(numbers *[]int, transform TransformFn) []int {
+func transformNumbers(numbers *[]int, transform func(int) int) []int {
 	dNumbers := []int{}
 
-	for _, value := range *numbers {
-		dNumbers = append(dNumbers, transform(value))
+	for _, val := range *numbers {
+		dNumbers = append(dNumbers, transform(val))
 	}
 
 	return dNumbers
-}
-
-func getTransformerFunction(numbers *[]int) TransformFn {
-	if (*numbers)[0] == 1 {
-		return double
-	} else {
-		return triple
-	}
-}
-
-func double(number int) int {
-	return number * 2
-}
-
-func triple(number int) int {
-	return number * 3
 }
