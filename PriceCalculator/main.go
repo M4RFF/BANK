@@ -6,7 +6,7 @@ import (
 
 func main() {
 	// prices := []float64{10, 20, 30}
-	taxRates := []float64{0, 0.3, 0.1, 0.13}
+	taxRates := []float64{0, 0.03, 0.1, 0.13}
 
 	// result := make(map[float64][]float64)
 
