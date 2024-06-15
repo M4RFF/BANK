@@ -5,4 +5,4 @@ my bank and dummy culculator. So, let's see what I will add with next commits. S
 
 I have created a price calculator 
 
-Now I learned more abot Goroutins and Channels so now i will be able to run a functions parallel 
+Now I learned more abot Goroutins and Channels so now i will be able to run functions parallel 
