@@ -22,6 +22,8 @@ func (fm FileManager) ReadLines() ([]string, error) {
 		return nil, errors.New("failed to open file")
 	}
 
+	defer file.Close()
+
 	scanner := bufio.NewScanner(file) // allows us to go line by line in this "file"
 
 	// we move farword one line of the line where we were
@@ -39,7 +41,7 @@ func (fm FileManager) ReadLines() ([]string, error) {
 		return nil, errors.New("failed to read in file")
 	}
 
-	file.Close()
+	// file.Close()
 	return lines, nil
 }
 
@@ -50,6 +52,8 @@ func (fm FileManager) WriteResult(data interface{}) error {
 		return errors.New("failed to creare a file")
 	}
 
+	defer file.Close()
+
 	time.Sleep(3 * time.Second)
 
 	encoder := json.NewEncoder(file)
@@ -59,7 +63,7 @@ func (fm FileManager) WriteResult(data interface{}) error {
 		return errors.New("failed to convert data to JSON")
 	}
 
-	file.Close()
+	// file.Close()
 	return nil
 }
 
