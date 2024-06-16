@@ -14,3 +14,5 @@ Today (6/15/2024) I have started learning more about the REST API, which means t
 2. [How Does The Web Work](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works)
 3. [HTTP Response Code](https://dev.opera.com/articles/http-response-codes/)
 4. [Understanding HTTP](https://dev.opera.com/articles/http-basic-introduction/)
+
+5. [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
