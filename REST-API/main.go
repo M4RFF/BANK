@@ -11,7 +11,7 @@ func main() {
 
 	server.GET("/events", getEvents) // GET, POST, PUT, PATCH, DELETE
 
-	server.Run(":8080") // localhost 8080
+	server.Run(":1313") // localhost 1313
 }
 
 func getEvents(context *gin.Context) {
