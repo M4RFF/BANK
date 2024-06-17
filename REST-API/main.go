@@ -35,6 +35,10 @@ func postEvent(context *gin.Context) {
 
 	event.ID = 1
 	event.UserID = 1
+
+	// now we save the recieve data
+	event.Save()
+
 	// send a respond if everything works
 	context.JSON(http.StatusCreated, gin.H{"message": "event created!", "event": event})
 }
