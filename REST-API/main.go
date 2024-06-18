@@ -2,12 +2,14 @@ package main
 
 import (
 	"net/http"
+	"rest-api/db"
 	"rest-api/models"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	db.InitDB()
 	server := gin.Default() // creates a server
 
 	server.GET("/events", getEvents) // GET, POST, PUT, PATCH, DELETE
