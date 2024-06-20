@@ -18,5 +18,6 @@ func main() {
 
 func getEvents(context *gin.Context) {
 	// send back a respond by JSON function
+
 	context.JSON(http.StatusOK, gin.H{"message": "Hello!"}) // stores tthe number 200
 }
