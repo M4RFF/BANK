@@ -28,7 +28,7 @@ func getEvents(context *gin.Context) {
 func postEvent(context *gin.Context) { // we use again (context *gin.Context)
 	// we need to get some data of incoming requests
 	var event models.Event
-	// if some filds are missing it's not a problem, cus'line bellow
+	// if some filds are missing it's not a problem, because line bellow
 	// just set a missing filed as zero
 	err := context.ShouldBindJSON(&event) // a little bit works like a Scan()
 
@@ -40,6 +40,9 @@ func postEvent(context *gin.Context) { // we use again (context *gin.Context)
 
 	event.ID = 1
 	event.UserID = 1
+
+	event.Save()
+
 	context.JSON(http.StatusCreated, gin.H{"message": "event created", "event": event})
 
 }

@@ -1,0 +1,10 @@
+POST http://localhost:1331/events
+// it says that that request is carry to some json data
+Content-Type: application/json
+
+{
+    "name": "Test event",
+    "description": "A test event",
+    "location": "A test location",
+    "dataTime": "2025-01-01T15:30:00.000Z"
+}
