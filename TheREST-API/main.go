@@ -2,12 +2,16 @@ package main
 
 import (
 	"net/http"
+	"theRestApi/db"
 	"theRestApi/models"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	db.InitDB()
+
 	// configers an http server
 	server := gin.Default()
 
