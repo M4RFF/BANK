@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 	"theRestApi/db"
 	"theRestApi/models"
 
@@ -16,6 +17,7 @@ func main() {
 	server := gin.Default()
 
 	server.GET("/events", getEvents) // GET, POST, DELETE, PUT, PATCH
+	server.GET("/events/:id")        // /events/1, /events/5
 
 	server.POST("/events", postEvent) // the same path /events
 
@@ -27,9 +29,28 @@ func getEvents(context *gin.Context) {
 	events, err := models.GetAllEvents()
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch event. Try again later"})
+		return
 	}
 	// send back a respond by JSON function
 	context.JSON(http.StatusOK, events) // stores the number 200
+}
+
+func getEvent(context *gin.Context) {
+	eventId, err := strconv.ParseInt(context.Param("id"), 10, 64)
+
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse event id"})
+		return
+	}
+
+	event, err := models.GetEventByID(eventId)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch event"})
+		return
+	}
+
+	context.JSON(http.StatusOK, event)
 }
 
 func postEvent(context *gin.Context) { // we use again (context *gin.Context)
