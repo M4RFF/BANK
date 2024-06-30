@@ -75,6 +75,7 @@ func postEvent(context *gin.Context) { // we use again (context *gin.Context)
 		return
 	}
 
+	// i have an error after writing this class
 	context.JSON(http.StatusCreated, gin.H{"message": "event created", "event": event})
 
 }
